@@ -25,7 +25,6 @@ gulp.task('vendorJS', function(){
     //concatenate vendor JS files
     gulp.src([
         './bower_components/jquery/dist/jquery.min.js',
-//        './bower_components/bootstrap/dist/js/bootstrap.min.js',
         './bower_components/d3/d3.min.js',
         './bower_components/tabletop/src/tabletop.js',
         './bower_components/topojson/topojson.js',
