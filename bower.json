@@ -1,0 +1,13 @@
+{
+  "name": "chile-mapas",
+  "version": "0.0.0",
+  "authors": [
+    "Pablo H. Paladino <paladinop@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "knockout": "~3.3.0",
+    "lodash": "~3.10.0",
+    "d3-tip": "~0.6.7"
+  }
+}

@@ -1,0 +1,127 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>COSOC</title>
+
+    <!-- Bootstrap -->
+
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color:#ccc">
+
+  <div data-bind="visible:loaded()">
+  
+    <p class="volver"><a data-bind="visible:selected()" class="back" href="javascript:;">ver total de Chile</a></p>
+    
+    <div data-bind="visible:!selected()">
+      <p></p>
+      <div class="title_cosoc">Total Chile</div>
+      <div class="subtitle_cosoc"><span class="numero_cosoc" data-bind="text: cosoc_total"></span> COSOC conformados</div>
+    </div>
+
+    <div data-bind="visible:selected()">
+      <div class="title_cosoc" data-bind="text: selected().nombre"></div>
+      <div class="subtitle_cosoc"><span class="numero_cosoc" data-bind="text: selected().conformado"></span> COSOC conformados</div>
+    </div>
+
+    <div id="chile-mapas"></div>
+    <div id="legend-text">% de COSOC conformado</div>
+    <div id="legend">
+      <span class="label">0%</span>
+      <ul></ul>
+      <span class="label">100%</span>
+    </div>
+
+    <h4>Detalles:</h4>
+    
+    <p class="volver"><a data-bind="visible:selected()" class="back" href="javascript:;">ver total de Chile</a></p>
+
+    <div data-bind="visible:!selected()">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Región</th>
+            <th>Comunas</th>
+            <th colspan="2">COSOC conformados</th>
+            <th colspan="2">COSOC NO conformados</th>
+            <th colspan="2">COSOC sin respuesta</th>
+            <th>Índice de transparencia activa</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: { data: regiones, as: 'r' }">
+          <tr>
+            <td><a href="javascript:;" data-bind="text: r.nombre, click: MapasChile.clickRegionText"></a></td>
+            <td data-bind="text: r.total_comunas"></td>
+            <td>
+              <strong data-bind="text: r.conformado"></strong>
+            </td>
+            <td>
+              <span data-bind="spanishNumber: r.conformado_porcentaje, precision: 2, suffix: '%'"></span>
+            </td>
+            <td>
+              <strong data-bind="text: r.no_conformado"></strong>
+            </td>
+            <td>
+              <span data-bind="spanishNumber: r.no_conformado_porcentaje, precision: 2, suffix: '%'"></span>
+            </td>
+            <td>
+              <strong data-bind="text: r.no_contesto"></strong>
+            </td>
+            <td>
+              <span data-bind="spanishNumber: r.no_contesto_porcentaje, precision: 2, suffix: '%'"></span>
+            </td>
+            <td data-bind="spanishNumber: r.indice_transparencia_activa, precision: 2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div data-bind="visible:selected()">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Comunas de <span data-bind="text: selected().nombre"></span></th>
+            <th>COSOC</th>
+            <th>Promedio sesiones anuales</th>
+            <th>Cant. de Organizaciones</th>
+            <th>Índice de transparencia activa</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: { data: comunas, as: 'c' }">
+          <tr>
+            <td data-bind="text: c.nombre"></td>
+            <td>
+              <span data-bind="if: (c.conformado=='1')">Conformado</span>
+              <span data-bind="if: (c.no_conformado=='1')">No Conformado</span>
+              <span data-bind="if: (c.no_contesto=='1')">No Contesta</span>
+            </td>
+            <td data-bind="html: MapasChile.getTextSesiones(c.codigo_sesiones_efectivas)"></td>
+            <td data-bind="html: MapasChile.getTextTamano(c.tamano_del_cosoc)"></td>
+            <td data-bind="spanishNumber: c.indice_transparencia_activa, precision: 2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div data-bind="visible:!loaded()">
+    Cargando...
+  </div>
+
+  <script src="js/lib.js"></script>
+  <script src="js/app.js"></script>
+
+  </body>
+</html>
