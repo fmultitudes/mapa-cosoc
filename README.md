@@ -1,5 +1,5 @@
 # Mapa COSOC
-Mapa interactivo de Chile, parte del sitio del reporte de COSOC.
+Mapa interactivo y responsive de Chile, parte del sitio del reporte de COSOC.
 Tooltips.
 Información obtenida desde un Google Spreadsheet.
 
