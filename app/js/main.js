@@ -55,8 +55,8 @@ var MapasChile;
             '-': 'No contesta',
             '1': 'M&aacute;s de 30',
             '2': 'Entre 20 y 29',
-            '3': 'Entre 10 y 19',
-            '4': 'Entre 5 y 9'
+            '3': 'Entre 12 y 19',
+            '4': 'Menos de 12'
         };
 
         return values[code];
